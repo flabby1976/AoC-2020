@@ -1,30 +1,23 @@
 with open('input.txt') as f:
     seq = [int(d) for d in f.read().split('\n')]
 
-target_num = 29221323
+print(seq)
 
+preamble=25
 len_seq = len(seq)
 
-for i in range(len_seq):
-    summ = 0
-    j = 0
-    while i+j < len_seq:
-        j += 1
-        summ = sum(seq[i:i+j])
-        if summ == target_num:
-            print("Success!")
-            print(i,j, summ)
-            print(seq[i:i+j])
-            mini = min(seq[i:i+j])
-            maxi = max(seq[i:i+j])
-            print("Min: {} Max: {} Sum(Min, Max): {}".format(mini, maxi, mini+maxi))
-            break
-        elif summ > target_num:
-            break
+def check_number(i, seq):
+    num = seq[i]
+    for j in range(preamble):
+        chk = seq[i-j-1]
+        if num-chk in (seq[i-preamble:i-1]) and not num-chk == chk:
+            print("{} = {} + {}".format(num, chk, num-chk))
+            return True
+    return False
 
 
-
-
-
-
+for i in range(preamble,len_seq):
+    if not check_number(i, seq):
+        print("First number to fail test is: {}".format(seq[i]))
+        break
 
