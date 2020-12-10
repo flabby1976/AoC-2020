@@ -5,22 +5,23 @@ target_num = 29221323
 
 len_seq = len(seq)
 
+j = 0
 for i in range(len_seq):
-    summ = 0
-    j = 0
-    while i+j < len_seq:
-        j += 1
-        summ = sum(seq[i:i+j])
+    while j < len_seq:
+        block = seq[i:j]
+        summ = sum(block)
         if summ == target_num:
             print("Success!")
             print(i,j, summ)
-            print(seq[i:i+j])
-            mini = min(seq[i:i+j])
-            maxi = max(seq[i:i+j])
+            print(block])
+            mini = min(block)
+            maxi = max(block)
             print("Min: {} Max: {} Sum(Min, Max): {}".format(mini, maxi, mini+maxi))
             break
         elif summ > target_num:
             break
+        j += 1
+
 
 
 
