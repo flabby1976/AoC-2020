@@ -13,7 +13,7 @@ for i in range(len_seq):
         if summ == target_num:
             print("Success!")
             print(i,j, summ)
-            print(block])
+            print(block)
             mini = min(block)
             maxi = max(block)
             print("Min: {} Max: {} Sum(Min, Max): {}".format(mini, maxi, mini+maxi))
